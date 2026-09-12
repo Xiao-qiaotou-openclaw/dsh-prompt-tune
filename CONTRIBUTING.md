@@ -70,7 +70,9 @@ npm test              # 两者都跑
 | 改了 | 生效方式 |
 | --- | --- |
 | `client/client.js` | **不用重启**：`dsh-client-hmr` 每 500ms stat 轮询 client bundle，变化会经 `/plugins/events` SSE 推给浏览器自动重载（保险起见 Ctrl+F5） |
-| `lib/index.js`、`cordis.patch.yml`、`package.json` | 需要重启 `dsh web`（profile patch 的 `patchReload: live` 实测没有把新增的 insert 行热挂载进来） |
+| `client/client.js` | **不用重启**（同上） |
+| `cordis.patch.yml`（增删 insert 行） | **通常不用重启**：配置监听会实时应用，前提是包能从 `<profile>/node_modules` 解析到。若某个包在触发时导入失败，那一行会停在失败状态——重启一次即可 |
+| `lib/index.js`、`package.json` | 需要重启 `dsh web`（宿主半边在插件加载时被导入，config 监听不会重新导入模块） |
 
 > 如果你确实用 `dsh plugin --profile web add <本目录>` 正式安装，**先删掉上面手工加的 insert 行**：本包自带 `dsh.bundle.patch` 会插入同一个 id，两处同时存在会让启动硬失败。
 

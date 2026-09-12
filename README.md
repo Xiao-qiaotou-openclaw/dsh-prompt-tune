@@ -90,10 +90,13 @@ to the profile's `cordis.patch.yml`:
       name: 'dsh-prompt-tune'
 ```
 
-> `patchReload: live` did not hot-mount a newly added insert row in testing, so
-> **restart `dsh web` after installing**. Client-half edits, by contrast, arrive
-> without a restart: `dsh-client-hmr` polls every client bundle and pushes
-> changes to the browser.
+> Adding or removing an insert row in `cordis.patch.yml` is applied **live** by the
+> profile's config watcher — no restart is needed, as long as the package resolves
+> from `<profile>/node_modules`. Client-half edits also arrive without a restart:
+> `dsh-client-hmr` polls every client bundle and pushes changes to the browser.
+> If a new row does not appear within a few seconds, restart `dsh web`: a row whose
+> package could not be imported at that moment stays failed until something
+> re-triggers it.
 
 ## Usage
 

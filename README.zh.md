@@ -86,7 +86,7 @@ dsh plugin --profile web add github:Xiao-qiaotou-openclaw/dsh-prompt-tune
       name: 'dsh-prompt-tune'
 ```
 
-> 实测 `patchReload: live` 不会把新增的 insert 行热挂载进来，所以**装完要重启 `dsh web`**。相反，改客户端半边**不用**重启：`dsh-client-hmr` 会轮询每个 client bundle 并把变化推给浏览器。
+> 在 `cordis.patch.yml` 里增删 insert 行会被 profile 的配置监听**实时应用**——只要包能从 `<profile>/node_modules` 解析到，就**不需要重启**。改客户端半边同样不用重启：`dsh-client-hmr` 轮询每个 client bundle 并把变化推给浏览器。如果新行几秒内没出现，再重启一次 `dsh web`：当时导入失败的包会一直停在失败状态，直到有东西重新触发它。
 
 ## 使用
 
