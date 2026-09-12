@@ -1,0 +1,6 @@
+# dsh bundle patch: inserts this plugin into a profile's layer stack.
+# The id is namespaced by the package name so the profile's own
+# cordis.patch.yml can address (or remove) exactly this row.
+- insert:
+    - id: dsh-prompt-tune
+      name: 'dsh-prompt-tune'

@@ -1,0 +1,11 @@
+# Entry for the awesome-dsh-plugin register.
+#
+# Copy this file to `data/plugins/Xiao-qiaotou-openclaw__dsh-prompt-tune.yml` in a fork of
+# https://github.com/awesome-dsh-plugin/awesome-dsh-plugin and open a PR.
+# Replace Xiao-qiaotou-openclaw here and in the filename with the real GitHub owner.
+url: https://github.com/Xiao-qiaotou-openclaw/dsh-prompt-tune
+name: Xiao-qiaotou-openclaw/dsh-prompt-tune
+category: ui
+description:
+  en: One-click prompt optimizer in the DSH Web composer — rewrites the unsent draft through the model DSH is already configured with, and restores the original draft on a second click.
+  zh: DSH Web 输入框里的一键提示词优化按钮——用 DSH 已配置的模型重写未发送的草稿，再点一次还原原文。

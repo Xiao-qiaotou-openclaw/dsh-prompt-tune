@@ -1,0 +1,32 @@
+# Dependencies — this package ships no runtime dependencies, so node_modules
+# exists only for local development.
+node_modules/
+.pnpm-store/
+
+# Logs and local scratch
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+*.tsbuildinfo
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Local packaging output (npm pack / pnpm pack)
+*.tgz
+dist/
+
+# Local plugin installs into a DSH profile (see README "Install")
+*.local.md
+.dsh/
+
+# Test scratch
+coverage/
+.nyc_output/

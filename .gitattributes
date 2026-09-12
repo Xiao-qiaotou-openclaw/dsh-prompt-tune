@@ -1,0 +1,11 @@
+# Keep line endings consistent across the contributors' platforms.
+# The browser half is shipped as written, so a stray CRLF is a real (if small)
+# change in the artifact users receive.
+* text=auto eol=lf
+
+# Binary assets, when any are added
+*.png binary
+*.jpg binary
+*.gif binary
+*.zip binary
+*.tgz binary

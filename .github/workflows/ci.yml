@@ -1,0 +1,30 @@
+# The repository has no build step, so CI is the release gate: it runs the
+# manifest check (name/module-id agreement, exports and patch targets, the
+# zero-dependency and no-install-script rules) and both test suites.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # DSH requires ^22.19.0 || >=24.0.0; the plugin inherits that floor.
+        node: ['22.x', '24.x']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Install development dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Manifest check and tests
+        run: npm run verify
